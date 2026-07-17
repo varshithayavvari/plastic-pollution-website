@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Waste - Reducing Plastic Waste for Better Ocean</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="dashboard.html" class="logo" style="font-size: 1.25rem;">
+        <i class="fa-solid fa-trash-can"></i>
+        <span>Reducing Plastic Waste</span> &nbsp;for Better Ocean
+      </a>
+      <nav>
+        <a href="dashboard.html">
+          <i class="fa-solid fa-chart-line" style="margin-right: 0.3rem;"></i> Dashboard
+        </a>
+        <a href="report.html" class="active">
+          <i class="fa-solid fa-circle-plus" style="margin-right: 0.3rem;"></i> Report Waste
+        </a>
+        <div class="user-info">
+          <i class="fa-solid fa-user-circle" style="font-size: 1.2rem;"></i>
+          <span id="nav-username">User</span>
+          <span id="nav-role" class="role-badge">Reporter</span>
+        </div>
+        <button class="btn-logout" id="btn-logout">
+          <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-wrapper" style="min-height: calc(100vh - 80px); padding: 2rem 1.5rem;">
+    <div class="auth-card glass-container" style="max-width: 600px; padding: 2.5rem;">
+      <div class="auth-header" style="text-align: left; margin-bottom: 2rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1rem;">
+        <h1 style="font-size: 1.6rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fa-solid fa-camera" style="color: var(--primary-color);"></i>
+          File Waste Report
+        </h1>
+        <p>Take or upload a photo, fetch GPS location, and file a report</p>
+      </div>
+
+      <form id="report-form" enctype="multipart/form-data">
+        <!-- Image Upload Section -->
+        <div class="form-group">
+          <label>Upload Waste Image *</label>
+          <div class="upload-area" id="upload-area">
+            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+            <p class="upload-text" id="upload-instruction">Drag & drop photo here or <span>browse files</span></p>
+            <p class="upload-text" style="font-size: 0.75rem; margin-top: 0.2rem; color: var(--text-muted);">Supports JPG, PNG, WEBP (Max 5MB)</p>
+            <img id="image-preview" class="image-preview" src="#" alt="Waste Preview">
+            <input type="file" id="file-input" name="image" class="file-input" accept="image/*" required>
+          </div>
+        </div>
+
+        <!-- Location Section -->
+        <div class="form-group">
+          <label>GPS Coordinates *</label>
+          <div class="geo-panel">
+            <button type="button" class="btn-geo" id="btn-get-location">
+              <i class="fa-solid fa-location-crosshairs"></i> Get Current Location
+            </button>
+            <div class="geo-status" id="geo-status">Coordinates not set yet</div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.8rem;">
+            <div>
+              <label for="latitude" style="font-size: 0.8rem; color: var(--text-muted);">Latitude</label>
+              <input type="number" step="any" id="latitude" class="input-control" placeholder="e.g. 12.9716" required>
+            </div>
+            <div>
+              <label for="longitude" style="font-size: 0.8rem; color: var(--text-muted);">Longitude</label>
+              <input type="number" step="any" id="longitude" class="input-control" placeholder="e.g. 77.5946" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waste Type Selection -->
+        <div class="form-group">
+          <label for="waste-type">Waste Category *</label>
+          <select id="waste-type" class="input-select" required>
+            <option value="" disabled selected>-- Select Type --</option>
+            <option value="Plastic">Plastic Waste</option>
+            <option value="Organic">Organic / Food Waste</option>
+            <option value="E-Waste">E-Waste (Electronics)</option>
+            <option value="Paper">Paper / Cardboard</option>
+            <option value="Glass">Glass Bottles / Shards</option>
+            <option value="Metal">Scrap Metal / Cans</option>
+            <option value="Hazardous">Hazardous / Medical</option>
+            <option value="General">General / Mixed Trash</option>
+          </select>
+        </div>
+
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label for="phone-number">Contact Phone Number *</label>
+          <input type="tel" id="phone-number" class="input-control" placeholder="e.g. 9876543210" required pattern="[0-9]{10,15}">
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-primary" id="btn-submit-report" style="margin-top: 1rem;">
+          <i class="fa-solid fa-paper-plane" style="margin-right: 0.5rem;"></i> Submit Waste Report
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/report.js"></script>
+</body>
+</html>

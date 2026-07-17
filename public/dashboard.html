@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Reducing Plastic Waste for Better Ocean</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <a href="dashboard.html" class="logo" style="font-size: 1.25rem;">
+        <i class="fa-solid fa-trash-can"></i>
+        <span>Reducing Plastic Waste</span> &nbsp;for Better Ocean
+      </a>
+      <nav>
+        <a href="dashboard.html" class="active">
+          <i class="fa-solid fa-chart-line" style="margin-right: 0.3rem;"></i> Dashboard
+        </a>
+        <a href="report.html">
+          <i class="fa-solid fa-circle-plus" style="margin-right: 0.3rem;"></i> Report Waste
+        </a>
+        <div class="user-info">
+          <i class="fa-solid fa-user-circle" style="font-size: 1.2rem;"></i>
+          <span id="nav-username">User</span>
+          <span id="nav-role" class="role-badge">Reporter</span>
+        </div>
+        <button class="btn-logout" id="btn-logout">
+          <i class="fa-solid fa-sign-out-alt"></i> Logout
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="dashboard-wrapper">
+    <!-- Statistics panel -->
+    <div class="stats-container">
+      <div class="stat-card glass-container total">
+        <div class="stat-icon">
+          <i class="fa-solid fa-dumpster"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Total Reports</h3>
+          <p id="stat-total">0</p>
+        </div>
+      </div>
+      
+      <div class="stat-card glass-container pending">
+        <div class="stat-icon">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Pending Action</h3>
+          <p id="stat-pending">0</p>
+        </div>
+      </div>
+
+      <div class="stat-card glass-container cleaned">
+        <div class="stat-icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="stat-info">
+          <h3>Cleaned Up</h3>
+          <p id="stat-cleaned">0</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reports list section -->
+    <div class="section-header">
+      <h2 id="section-title">Your Reported Issues</h2>
+      <a href="report.html" class="btn-add">
+        <i class="fa-solid fa-plus"></i> New Report
+      </a>
+    </div>
+
+    <!-- Grid items loaded by javascript -->
+    <div class="reports-grid" id="reports-grid">
+      <!-- Loading indicator -->
+      <div style="grid-column: 1 / -1; text-align: center; padding: 3rem;">
+        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary-color);"></i>
+        <p style="margin-top: 1rem; color: var(--text-secondary);">Loading reports...</p>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
